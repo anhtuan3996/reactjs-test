@@ -30,3 +30,7 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+
+.border-img {
+  border: 5px solid #f12b2b;
+}
