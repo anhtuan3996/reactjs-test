@@ -3,7 +3,15 @@ import authHeader from "./auth-header";
 
 const API_URL = process.env.REACT_APP_API_URL
 
+
 const getImages = (params = {}) => {
+    const query = new URLSearchParams({...params, ...{page: 1, limit: 10}}).toString()
+    return axios.get("https://picsum.photos/v2/list?"+ query);
+};
+
+
+
+const getItems = (params = {}) => {
     const query = new URLSearchParams({...params, ...{page: 1, limit: 10}}).toString()
 
     const config = {
@@ -30,5 +38,6 @@ const updateItem = (id, data) => {
 
 export default {
     getImages,
+    getItems,
     updateItem
 };

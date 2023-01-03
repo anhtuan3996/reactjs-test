@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import ImageService from "../services/image.service";
 import EventBus from "../common/EventBus";
+// import GoogleImage from "google-images"
 
 const BoardImages = () => {
     const [name, setName] = React.useState("");
@@ -11,7 +12,7 @@ const BoardImages = () => {
     const [selectedId, setSelectedId] = useState('');
 
     useEffect(() => {
-        ImageService.getImages({status: 'AC'}).then(
+        ImageService.getImages().then(
             (response) => {
                 const content =  response.data
                 setContent(content);
@@ -28,7 +29,7 @@ const BoardImages = () => {
 
     React.useEffect(() => {
         setTimeout(() => {
-            ImageService.getImages({ name, status: 'AC' }).then(
+            ImageService.getImages({ name}).then(
                 (response) => {
                     const content =  response.data
                     setContent(content);
@@ -110,7 +111,7 @@ const BoardImages = () => {
 
                     return (
                         <div  className={selectedId == res.id ? 'border-img col-lg-2 col-md-6 mb-4' : 'col-lg-2 col-md-6 mb-4'} key={res.id} onClick={() => { handleChooseItem(res.id)}} >
-                            <img className="card-img-top" src={res.image_url} alt={res.name} />
+                            <img className="card-img-top" src={res.download_url} alt={res.name} />
                         </div>
                     )
                 })
