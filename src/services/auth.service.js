@@ -1,27 +1,22 @@
 import axios from "axios";
 
-const API_URL = "https://dummyjson.com/";
+const API_URL = process.env.REACT_APP_API_URL
 
-const register = (username, email, password) => {
-  // return axios.post(API_URL + "users/add", {
-  //   username,
-  //   email,
-  //   password,
-  // });
-
-  return axios.post(API_URL + "users/add", {
-    firstName: 'Muhammad',
-    lastName: 'Ovi',
-    age: 250,
-  });
+const register = (user) => {
+  return axios.post(API_URL + "/users/register/", user);
 };
 
 const login = (username, password) => {
-  return axios
-    .post(API_URL + "auth/login", {
+  const config = {
+    method: 'post',
+    url: `${API_URL}/api-token-auth/`,
+    data : {
       username,
-      password,
-    })
+      password
+    }
+  };
+
+  return axios(config)
     .then((response) => {
       console.log({response})
       if (response.data.token) {

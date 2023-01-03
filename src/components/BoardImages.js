@@ -13,10 +13,12 @@ const BoardImages = () => {
     useEffect(() => {
         ImageService.getImages().then(
             (response) => {
-                const content =  response.data
-                setContent(content);
+                console.log({ response })
+                // const content =  []
+                // setContent(content);
             },
             (error) => {
+                console.log(error, 'errorerror')
                 const _content =
                     (error.response &&
                         error.response.data &&
@@ -87,15 +89,15 @@ const BoardImages = () => {
                 </div>
             </div>
             <div className="row d-flex justify-content-center">
-                { content.map((res) => {
+                {/*{ content.map((res) => {*/}
 
-                    return (
-                        <div  className={selectedId == res.id ? 'border-img col-lg-2 col-md-6 mb-4' : 'col-lg-2 col-md-6 mb-4'} key={res.id} onClick={() => { handleChooseItem(res.id)}} >
-                            <img className="card-img-top" src={res.download_url} alt="Card image cap" />
-                        </div>
-                    )
-                })
-                }
+                {/*    return (*/}
+                {/*        <div  className={selectedId == res.id ? 'border-img col-lg-2 col-md-6 mb-4' : 'col-lg-2 col-md-6 mb-4'} key={res.id} onClick={() => { handleChooseItem(res.id)}} >*/}
+                {/*            <img className="card-img-top" src={res.download_url} alt="Card image cap" />*/}
+                {/*        </div>*/}
+                {/*    )*/}
+                {/*})*/}
+                {/*}*/}
             </div>
             <div className="d-flex justify-content-between">
                 <button type="button" className="btn btn-warning" onClick={handleSkip}>Skip</button>

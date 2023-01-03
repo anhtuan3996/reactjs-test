@@ -3,6 +3,7 @@
 .env
 ```
 PORT=8081
+REACT_APP_API_URL=http://localhost:8080
 ```
 
 ### Project setup
@@ -15,6 +16,8 @@ npm install
 yarn install
 ```
 
+Run application
 
-#### Login user and get token
-You can use any user's credentials from https://dummyjson.com/users
+```
+npm run start
+```
