@@ -8,15 +8,27 @@ const getImages = (params = {}) => {
 
     const config = {
         method: 'get',
-        url: API_URL + "/items?"+ query,
-        headers: {
-            'Authorization': 'TOKEN d0d6387204d47cd756d0b33f22858df7945fbb09'
-        }
+        url: API_URL + "/items/?"+ query,
+        headers: authHeader(),
+    };
+
+    return axios(config);
+};
+
+
+const updateItem = (id, data) => {
+
+    var config = {
+        method: 'patch',
+        url: API_URL + '/items/'+ id +'/',
+        headers: authHeader(),
+        data : data
     };
 
     return axios(config);
 };
 
 export default {
-    getImages
+    getImages,
+    updateItem
 };
