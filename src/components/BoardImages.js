@@ -11,6 +11,8 @@ const BoardImages = () => {
 
     const [selectedId, setSelectedId] = useState('');
 
+    const [item, setItem] = useState({});
+
     useEffect(() => {
         ImageService.getImages().then(
             (response) => {
@@ -19,20 +21,16 @@ const BoardImages = () => {
             },
             (error) => {
                 console.log(error)
-
-                if (error.response && error.response.status === 401) {
-                    EventBus.dispatch("logout");
-                }
             }
         );
     }, []);
 
     React.useEffect(() => {
         setTimeout(() => {
-            ImageService.getImages({ name}).then(
+            ImageService.getItems({ name}).then(
                 (response) => {
                     const content =  response.data
-                    setContent(content);
+                    setItem(content[0]);
                 },
                 (error) => {
                     if (error.response && error.response.status === 401) {
@@ -44,13 +42,14 @@ const BoardImages = () => {
     }, [name])
 
     const handleChooseItem = id => {
-        // TODO: Call API
+        // TODO: update API params
         if (id == selectedId) {
             setSelectedId('')
         }else {
             setSelectedId(id)
             ImageService.updateItem(id, {
-                status: 'PD'
+                status: 'PD',
+                "image_url": 'test'
             }).then(
                 (response) => {
                     ImageService.getImages({ status: 'AC' }).then(
