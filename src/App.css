@@ -34,3 +34,8 @@ label {
 .border-img {
   border: 5px solid #f12b2b;
 }
+
+
+.border-1 {
+  border: 1px solid;
+}

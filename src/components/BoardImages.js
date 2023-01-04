@@ -109,8 +109,9 @@ const BoardImages = () => {
                 { content.map((res) => {
 
                     return (
-                        <div  className={selectedId == res.id ? 'border-img col-lg-2 col-md-6 mb-4' : 'col-lg-2 col-md-6 mb-4'} key={res.id} onClick={() => { handleChooseItem(res.id)}} >
+                        <div  className={selectedId == res.id ? 'border-img col-lg-2 col-md-6 mb-4 pt-1 mr-1' : 'col-lg-2 col-md-6 mb-4 border-1 pt-1 mr-1'} key={res.id} onClick={() => { handleChooseItem(res.id)}} >
                             <img className="card-img-top" src={res.download_url} alt={res.name} />
+                            <p className="text-center">{res.name || res.author}</p>
                         </div>
                     )
                 })
